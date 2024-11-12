@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  front:
+    build:
+      context: ./FRONT
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./FRONT:/app
+    command: npm start
+
+  back:
+    build:
+      context: ./BACK
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./BACK:/app
+    command: npm run dev
