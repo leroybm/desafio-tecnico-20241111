@@ -1,11 +1,13 @@
 # Desafio Técnico - Frontend
 
-To run the project just run `docker compose up`
+To run the project just run `docker compose up`, then open `http://localhost:4200/`
 
 Alternatively, open the BACK and the FRONT with the correct node (see .nvmrc), and run `npm install`, then
 
 FRONT: `npm start`
 BACK: `npm run dev`
+
+Then open `http://localhost:4200/`
 
 ## What was delivered
 
