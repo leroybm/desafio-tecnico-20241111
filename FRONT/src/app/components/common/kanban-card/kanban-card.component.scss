@@ -1,0 +1,19 @@
+.card {
+    margin: 1rem;
+    margin-bottom: 0;
+    background-color: white;
+
+    &__field {
+        width: 100%;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    &__footer {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+}

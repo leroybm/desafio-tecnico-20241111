@@ -1,5 +1,6 @@
-Login
-<form class="example-form" [formGroup]="loginForm" (submit)="onSubmit()">
+<form class="login-form" [formGroup]="loginForm" (submit)="onSubmit()">
+  <h1>Login</h1>
+
   <mat-form-field class="example-full-width">
     <mat-label>Login</mat-label>
     <input
@@ -7,6 +8,7 @@ Login
       matInput
       formControlName="login"
       placeholder="Ex. pat@example.com"
+      value="letscode"
     />
     @if (loginForm.hasError('login') &&
     !loginForm.hasError('required')) {

@@ -20,4 +20,8 @@ export class PersistenceService {
   getItem(key: string): string | null {
     return localStorage.getItem(`${this.prefix}-${key}`);
   }
+
+  removeItem(key: string): void {
+    localStorage.removeItem(`${this.prefix}-${key}`)
+  }
 }

@@ -1,1 +1,31 @@
-<p>kanban works!</p>
+<mat-toolbar class="toolbar">
+  <span class="toolbar__title">Kanban Board</span>
+  <button mat-flat-button (click)="newCard()">Create New</button>
+  <span class="toolbar__spacer"></span>
+  <button mat-icon-button aria-label="Logout of the application" (click)="loginService.logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="kanban" cdkDropListGroup>
+  @for (item of lists; track item) {
+  <div
+    cdkDropList
+    [cdkDropListData]="cards[item]"
+    (cdkDropListDropped)="handleDrop($event)"
+    class="kanban__list"
+  >
+    <h2>{{ item }}</h2>
+    @for (card of cards[item]; track card.id) {
+    <app-kanban-card
+      cdkDrag
+      [card]="card"
+      [editing]="card?.editing || false"
+      (onEdit)="handleEdit($event)"
+      (onDelete)="handleDelete($event)"
+      (onMove)="handleMove($event)"
+    ></app-kanban-card>
+    }
+  </div>
+  }
+</div>

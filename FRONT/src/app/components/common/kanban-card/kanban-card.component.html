@@ -1,0 +1,86 @@
+<mat-card appearance="outlined" class="card">
+  @if (!editing) {
+  <mat-card-header>
+    <mat-card-title>{{ card.title }}</mat-card-title>
+  </mat-card-header>
+  <br />
+  <mat-card-content>
+    {{ card.content }}
+  </mat-card-content>
+  } @else {
+  <form (submit)="handleEdit()">
+    <mat-card-header>
+      <mat-card-title>Edit Card</mat-card-title>
+    </mat-card-header>
+    <br />
+    <mat-card-content>
+      <mat-form-field class="card__field">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          type="text"
+          name="title"
+          [(ngModel)]="innerCard.title"
+          cdkFocusInitial
+        />
+      </mat-form-field>
+      <mat-form-field class="card__field">
+        <mat-label>Content</mat-label>
+        <textarea
+          matInput
+          name="content"
+          [(ngModel)]="innerCard.content"
+          rows="4"
+        ></textarea>
+      </mat-form-field>
+      <mat-form-field class="card__field">
+        <mat-label>List</mat-label>
+        <mat-select [(value)]="innerCard.list" name="list">
+          @for (list of KanbanList; track list) {
+          <mat-option [value]="list">{{ list }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </form>
+  }
+
+  <div class="card__footer">
+    <mat-card-actions align="start">
+      @if (!editing) {
+      <button
+        mat-icon-button
+        [disabled]="innerCard.list === 'ToDo'"
+        (click)="handleMove(-1)"
+      >
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        [disabled]="innerCard.list === 'Done'"
+        (click)="handleMove(+1)"
+      >
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+      }
+    </mat-card-actions>
+
+    <mat-card-actions align="end">
+      <button
+        mat-button
+        (click)="
+          editing && innerCard.id !== null ? (editing = false) : handleDelete()
+        "
+      >
+        {{ innerCard.id === null || editing ? "Cancel" : "Delete" }}
+      </button>
+      <button
+        mat-button
+        (click)="handleEdit()"
+        [disabled]="!innerCard.title || !innerCard.content"
+      >
+        {{ editing ? "Save" : "Edit" }}
+      </button>
+    </mat-card-actions>
+  </div>
+</mat-card>

@@ -6,7 +6,8 @@ import { AUTH_TOKEN } from './constants/auth.constants';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
   standalone: true,
   imports: [RouterModule],
 })

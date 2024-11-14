@@ -1,0 +1,39 @@
+.toolbar {
+    &__title {
+        margin-right: 1.5rem;
+    }
+
+    &__spacer {
+        flex: 1 1 auto;
+    }
+}
+
+.kanban {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        min-width: 15rem;
+        max-width: 20rem;
+        width: 100%;
+        margin: .5rem;
+        background: rgb(250, 249, 253);
+        border: 1px solid #ddd;
+        border-radius: .5rem;
+        padding-bottom: 1rem;
+        min-height: 50rem;
+    }
+}
